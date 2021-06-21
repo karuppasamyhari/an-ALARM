@@ -1,0 +1,56 @@
+(NOTE: This code is a EMBEDDED "C" Code)
+int buzzer = 5;
+int LightPin = A0;
+int LightLevel=0;
+
+void setup() 
+{
+    //Assinging the pin  
+    pinMode(5,OUTPUT); 
+    pinMode(A0,INPUT);
+    Serial.begin(9600);
+  
+}
+
+void loop() 
+{
+    LightLevel = analogRead(LightPin);
+    Serial.print(LightLevel);
+    Serial.print("LightLevel :");
+    
+    
+  
+    if(LightLevel>=20&&LightLevel<=40)
+      
+    { 
+
+      //tone( pin number, frequency in hertz, duration in milliseconds);
+      tone(buzzer,261,500);    
+      delay(1300);
+      noTone(buzzer); 
+    }
+  
+    else if(LightLevel>=40&&LightLevel<=60)
+       
+    {
+      tone(buzzer,293,500);             
+      delay(1100);    
+      noTone(buzzer); 
+    }
+    else if(LightLevel>=60&&LightLevel<=80)
+    
+    { 
+      tone(buzzer,329,500);      
+      delay(900);
+      noTone(buzzer); 
+     }
+  
+   else if(LightLevel>=80)
+    {
+    tone(buzzer,349,500);   
+    delay(700);    
+    noTone(buzzer); 
+     }
+  
+}
+  
